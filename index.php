@@ -22,6 +22,8 @@ $msisdn = $data['msisdn'];
 $userData = $data['userData'];
 $network = $data['network'];
 
+$resultkey = $sessionID.'result';
+
 if ($newSession) {
     $message = "Welcome to Eventish select option to continue" .
         "\n1. Votes" .
@@ -117,7 +119,7 @@ if ($lastResponse['level'] === 1) {
         $message = $res['message'];
 
         $continueSession = ($res['message'] !== 'Invalid Code')? true : false;
-        $resultkey = $sessionID.'result';
+       
         $Psr16Adapter->set($resultkey, $res['data']);
 
         $currentState = [
@@ -135,7 +137,7 @@ if ($lastResponse['level'] === 1) {
         $Psr16Adapter->set($sessionID, $userResponseTracker);
     } else if ($lastResponse['page'] === 2 && $lastResponse['page'] == 2) {
         // Useful Resources
-        $message = menu::votesummary($Psr16Adapter->get($sessionID.'result'),$userData);
+        $message = menu::votesummary($Psr16Adapter->get($resultkey),$userData);
 
         $continueSession = true;
 
