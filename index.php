@@ -113,7 +113,8 @@ if ($lastResponse['level'] === 1) {
     }
 } else if ($lastResponse['level'] === 2) {
     if ($lastResponse['page'] === 1 ) {
-        $message = $menu->voteamount($userData)['$message'];
+        $res = $menu->voteamount($userData);
+        $message = $res['message'];
 
         $continueSession = ($message['message'] !== 'Invalid Code')? true : false;
 
