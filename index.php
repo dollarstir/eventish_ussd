@@ -24,6 +24,10 @@ $network = $data['network'];
 
 $resultkey = $sessionID.'result';
 
+
+$userdata = '*928*998*8ndm';
+$extracteddata = explode('*', $userdata);
+
 if ($newSession && $userData === '*928*998#') {
     $message = "Welcome to Eventish select option to continue" .
         "\n1. Votes" .
@@ -67,6 +71,35 @@ if ($newSession && $userData === '*928*998#') {
     ]);
     exit();
 }
+
+
+
+if ($newSession && count($extracteddata)== 4 ) {
+    $res = $menu->voteamount($extracteddata[3]);
+        $message = $res['message'];
+
+        $continueSession = ($res['message'] !== 'Invalid Code')? true : false;
+       
+        $Psr16Adapter->set($resultkey, $res['data']);
+
+        $currentState = [
+            'sessionID' => $sessionID,
+            'msisdn' => $msisdn,
+            'userData' => $userData,
+            'network'   => $network,
+            'newSession' => $newSession,
+            'message' => $message,
+            'level' => 2,
+            'page' => 2,
+        ];
+
+        $userResponseTracker[] = $currentState;
+        $Psr16Adapter->set($sessionID, $userResponseTracker);
+}
+
+
+
+
 
 
 $userResponseTracker = $Psr16Adapter->get($sessionID) ?? [];
