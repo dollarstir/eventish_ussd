@@ -26,7 +26,7 @@ $resultkey = $sessionID.'result';
 
 
 // $userdata = '*928*998*8ndm';
-$extracteddata = explode('*', $userdata);
+$extracteddata = explode('*', $userData);
 
 
 
