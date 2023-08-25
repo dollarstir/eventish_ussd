@@ -117,6 +117,8 @@ if ($lastResponse['level'] === 1) {
         $message = $res['message'];
 
         $continueSession = ($res['message'] !== 'Invalid Code')? true : false;
+        $resultkey = $sessionID.'result';
+        $Psr16Adapter->set($resultkey, $res['data']);
 
         $currentState = [
             'sessionID' => $sessionID,
@@ -131,11 +133,9 @@ if ($lastResponse['level'] === 1) {
 
         $userResponseTracker[] = $currentState;
         $Psr16Adapter->set($sessionID, $userResponseTracker);
-    } else if ($lastResponse['page'] === 2 && $userData === '#') {
+    } else if ($lastResponse['page'] === 2 && $lastResponse['page'] == 2) {
         // Useful Resources
-        $message = "For SMS which of the features do you like best?" .
-            "\n4. SMS To Contacts" .
-            "\n\n*. Go Back";
+        $message = menu::votesummary($Psr16Adapter->get($sessionID.'result'),$userData);
 
         $continueSession = true;
 
