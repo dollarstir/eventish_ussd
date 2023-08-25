@@ -43,8 +43,8 @@ if ($newSession && count($extracteddata) == 4) {
         'network'   => $network,
         'newSession' => $newSession,
         'message' => $message,
-        'level' => 1,
-        'page' => 1,
+        'level' => 2,
+        'page' => 2,
     ];
 
     $userResponseTracker = $Psr16Adapter->get($sessionID);
