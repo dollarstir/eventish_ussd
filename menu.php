@@ -1,5 +1,5 @@
 <?php
-
+    use Phpfastcache\Helper\Psr16Adapter;
 // *******************************************
 // * Copyright (c) 2022 Dollarsoft Enterprise. ( http://www.github.com/dollarstir)
 // * All rights reserved.
@@ -47,6 +47,7 @@ class menu{
 
     public   function voteamount($userdata){
         session_start();
+    
         $result = $this->getnomineedata($userdata);
         if ($result['status'] == 1) {
             $response = ucfirst($result['data']['nomineeData'][0]['events'][0]['label']) . "\n\n";
@@ -54,6 +55,8 @@ class menu{
             $response .= ucfirst($result['data']['nomineeName']) . "\n\n";
             $response .= "Enter the number of votes  \n";
             $response .= "(GHc ".$result['data']['votePrice'] ."/vote)";
+
+            
 
         
             // $_SESSION[$sessionID] = ['level' => 3, 'option' => 1.11, 'code' => $userdata];
@@ -63,7 +66,7 @@ class menu{
             $response = 'Invalid Code';
         }
 
-        return $response;
+        return ['message' => $response, 'data' => $result];
 
 
        

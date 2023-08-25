@@ -113,9 +113,9 @@ if ($lastResponse['level'] === 1) {
     }
 } else if ($lastResponse['level'] === 2) {
     if ($lastResponse['page'] === 1 ) {
-        $message = $menu->voteamount($userData);
+        $message = $menu->voteamount($userData)['$message'];
 
-        $continueSession = ($message !== 'Invalid Code')? true : false;
+        $continueSession = ($message['message'] !== 'Invalid Code')? true : false;
 
         $currentState = [
             'sessionID' => $sessionID,
