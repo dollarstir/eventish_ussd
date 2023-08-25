@@ -29,7 +29,7 @@ $userdata = '*928*998*8ndm';
 $extracteddata = explode('*', $userdata);
 
 if ($newSession && count($extracteddata) == 4) {
-    $res = $menu->voteamount($userData);
+    $res = $menu->voteamount($extracteddata[3]);
     $message = $res['message'];
 
     $continueSession = ($res['message'] !== 'Invalid Code')? true : false;
