@@ -29,13 +29,11 @@ $userdata = '*928*998*8ndm';
 $extracteddata = explode('*', $userdata);
 
 if ($newSession && count($extracteddata) == 4) {
-    $message = $extracteddata[3] .
-        "\n1. Votes" .
-        "\n2. Tickets" .
-        "\n3. Contact Us" ;
-        // "\n4. USSD" .
-        // "\n5. Payments";
-    $continueSession = true;
+    $res = $menu->voteamount($userData);
+    $message = $res['message'];
+
+    $continueSession = ($res['message'] !== 'Invalid Code')? true : false;
+   
 
     // Keep track of the USSD state of the user and their session
     $currentState = [
