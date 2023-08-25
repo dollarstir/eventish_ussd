@@ -48,13 +48,14 @@ class menu{
     public   function voteamount($userdata){
         session_start();
         $result = $this->getnomineedata($userdata);
-        if($result['status'] == 1){
-            $response = $result['data']['nomineeData'][0]['events'][0]['label'].'\n\n';
-            $response .= $result['data']['categoryName'].'\n';
+        if ($result['status'] == 1) {
+            $response = $result['data']['nomineeData'][0]['events'][0]['label'] . "\n\n";
+            $response .= $result['data']['categoryName'] . "\n";
             $response .= $result['data']['nomineeName'];
-
-            // $_SESSION[$sessionID] = ['level' => 3, 'option' =>1.11, 'code' => $userdata];
+        
+            // $_SESSION[$sessionID] = ['level' => 3, 'option' => 1.11, 'code' => $userdata];
         }
+        
         else{
             $response = 'Invalid Code';
         }
