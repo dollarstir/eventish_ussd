@@ -21,12 +21,12 @@ $userData = $data['userData'];
 $network = $data['network'];
 
 if ($newSession) {
-    $message = "Welcome to Arkesel Voting Portal. Please vote for your favourite service from Arkesel" .
-        "\n1. SMS" .
-        "\n2. Voice" .
-        "\n3. Email" .
-        "\n4. USSD" .
-        "\n5. Payments";
+    $message = "Welcome to Eventish select option to continue" .
+        "\n1. Votes" .
+        "\n2. Tickets" .
+        "\n3. Contact Us" ;
+        // "\n4. USSD" .
+        // "\n5. Payments";
     $continueSession = true;
 
     // Keep track of the USSD state of the user and their session
@@ -91,10 +91,7 @@ if ($lastResponse['level'] === 1) {
         $message = "Thank you for voting!";
         $continueSession = false;
     } else if ($userData === '1') {
-        $message = "For SMS which of the features do you like best?" .
-            "\n1. From File" .
-            "\n2. Quick SMS" .
-            "\n\n #. Next Page";
+        $message =  menu::vote();
 
         $continueSession = true;
 

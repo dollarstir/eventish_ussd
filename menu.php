@@ -17,9 +17,9 @@ class menu{
     }
 
 
-    public static function vote($sessionID){
+    public static function vote(){
       
-        $_SESSION[$sessionID] = ['level' => 2, 'option' => 1.1];
+       
         $response = ' Enter Nominee\'s Code ';
         
         return  $response;
