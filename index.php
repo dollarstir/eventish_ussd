@@ -25,8 +25,55 @@ $network = $data['network'];
 $resultkey = $sessionID.'result';
 
 
-$userdata = '*928*998*8ndm';
+// $userdata = '*928*998*8ndm';
 $extracteddata = explode('*', $userdata);
+
+
+
+if ($newSession && count($extracteddata) == 3) {
+    $message = "Welcome to Eventish select option to continue" .
+        "\n1. Votes" .
+        "\n2. Tickets" .
+        "\n3. Contact Us" ;
+        // "\n4. USSD" .
+        // "\n5. Payments";
+    $continueSession = true;
+
+    // Keep track of the USSD state of the user and their session
+    $currentState = [
+        'sessionID' => $sessionID,
+        'msisdn' => $msisdn,
+        'userData' => $userData,
+        'network'   => $network,
+        'newSession' => $newSession,
+        'message' => $message,
+        'level' => 1,
+        'page' => 1,
+    ];
+
+    $userResponseTracker = $Psr16Adapter->get($sessionID);
+
+    !$userResponseTracker
+        ? $userResponseTracker = [$currentState]
+        : $userResponseTracker[] = $currentState;
+
+    $Psr16Adapter->set($sessionID, $userResponseTracker);
+
+    http_response_code(200);
+
+    // treat this as json
+    header('Content-Type: application/json');
+
+    echo json_encode([
+        'sessionID' => $sessionID,
+        'msisdn' => $msisdn,
+        'userID' => $userID,
+        'continueSession' => $continueSession,
+        'message' => $message,
+    ]);
+    exit();
+}
+
 
 if ($newSession && count($extracteddata) == 4) {
     $res = $menu->voteamount($extracteddata[3]);
