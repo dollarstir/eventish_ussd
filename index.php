@@ -24,7 +24,7 @@ $network = $data['network'];
 
 $resultkey = $sessionID.'result';
 
-if ($newSession) {
+if ($newSession && $userData === '*928*998#') {
     $message = "Welcome to Eventish select option to continue" .
         "\n1. Votes" .
         "\n2. Tickets" .
