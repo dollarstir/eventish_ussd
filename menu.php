@@ -53,7 +53,7 @@ class menu{
             $response .= ucfirst($result['data']['categoryName']) . "\n";
             $response .= ucfirst($result['data']['nomineeName']) . "\n\n";
             $response .= "Enter the number of votes  \n";
-            $response .= "GHc ".$result['data']['votePrice'] ."/vote";
+            $response .= "(GHc ".$result['data']['votePrice'] ."/vote)";
 
         
             // $_SESSION[$sessionID] = ['level' => 3, 'option' => 1.11, 'code' => $userdata];
