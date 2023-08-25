@@ -116,7 +116,7 @@ if ($lastResponse['level'] === 1) {
         $res = $menu->voteamount($userData);
         $message = $res['message'];
 
-        $continueSession = ($message['message'] !== 'Invalid Code')? true : false;
+        $continueSession = ($res['message'] !== 'Invalid Code')? true : false;
 
         $currentState = [
             'sessionID' => $sessionID,
