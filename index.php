@@ -32,6 +32,8 @@ if ($newSession && count($extracteddata) == 4) {
     $res = $menu->voteamount($extracteddata[3]);
     $message = $res['message'];
 
+    $Psr16Adapter->set($resultkey, $res['data']);
+
     $continueSession = ($res['message'] !== 'Invalid Code')? true : false;
    
 
