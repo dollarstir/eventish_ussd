@@ -75,8 +75,8 @@ class menu{
 
     public static function votesummary($data,$userData){
         $response = 'Summary of your vote';
-        $response .= 'Nominee: '.ucfirst($data['data']['nomineeName'])."\n";
-        $response .= 'Category: '.ucfirst($data['data']['categoryName'])."\n";
+        $response .= "Nominee: \n".ucfirst($data['data']['nomineeName'])."\n";
+        $response .= "Category: \n".ucfirst($data['data']['categoryName'])."\n";
         $response .= 'Total Votes: '.$userData."\n";
         $response .= 'Total Amount: '.($data['data']['votePrice'] *  $userData)."\n\n";
         $response .= '1. Proceed';
