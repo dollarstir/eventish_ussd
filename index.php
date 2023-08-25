@@ -78,7 +78,7 @@ $respose = [
     'msisdn' => $msisdn,
     "message" => $message,
     "continueSession" => $continueSession,
-    'state' => $_SESSION[$sessionID],
+    
 
 ];
 echo json_encode($respose);
