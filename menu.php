@@ -45,7 +45,7 @@ class menu{
 
     }
 
-    public function voteamount($userdata,$sessionID){
+    public   function voteamount($userdata){
         session_start();
         $result = $this->getnomineedata($userdata);
         if($result['status'] == 1){
@@ -53,10 +53,10 @@ class menu{
             $response .= $result['data']['categoryName'].'\n';
             $response .= $result['data']['nomineeName'];
 
-            $_SESSION[$sessionID] = ['level' => 3, 'option' =>1.11, 'code' => $userdata];
+            // $_SESSION[$sessionID] = ['level' => 3, 'option' =>1.11, 'code' => $userdata];
         }
         else{
-            $response = 'CON Invalid Code';
+            $response = 'Invalid Code';
         }
 
         return $response;

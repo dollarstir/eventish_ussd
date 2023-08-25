@@ -2,6 +2,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/menu.php';
+$menu = new menu();
 
 use Phpfastcache\Helper\Psr16Adapter;
 
@@ -111,13 +112,10 @@ if ($lastResponse['level'] === 1) {
         $Psr16Adapter->set($sessionID, $userResponseTracker);
     }
 } else if ($lastResponse['level'] === 2) {
-    if ($lastResponse['page'] === 1 && $userData === '#') {
-        $message = "For SMS which of the features do you like best?" .
-            "\n3. Bulk SMS" .
-            "\n\n*. Go Back" .
-            "\n#. Next Page";
+    if ($lastResponse['page'] === 1 ) {
+        $message = $menu->voteamount($userData);
 
-        $continueSession = true;
+        $continueSession = ($message !== 'Invalid Code')? true : false;
 
         $currentState = [
             'sessionID' => $sessionID,
