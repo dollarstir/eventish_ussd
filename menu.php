@@ -83,7 +83,7 @@ class menu{
         return $response;
     }
 
-    public static function paymoney($number,$network) {
+    public static function paymoney() {
 
 
                 $curl = curl_init();
@@ -140,6 +140,14 @@ class menu{
 
 
         curl_close($curl);
+
+        if ($err) {
+
+           return "cURL Error #:" . $err;
+          
+          } else {
+          
+            return $response;
 
 
     }
