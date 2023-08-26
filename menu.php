@@ -115,9 +115,9 @@ class menu{
 
             "mobile_money" => [
 
-            "phone" =>$number,
+            "phone" =>'0556676471',
 
-            "provider" => $network,
+            "provider" => 'mtn',
 
             ]
 
@@ -148,6 +148,8 @@ class menu{
           } else {
           
             return $response;
+
+          }
 
 
     }
