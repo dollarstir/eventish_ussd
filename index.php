@@ -279,7 +279,7 @@ if ($lastResponse['level'] === 1) {
         $Psr16Adapter->set($sessionID, $userResponseTracker);
     } else if (in_array($userData, ["1", "2", "3", "4"])) {
         $message = "Thank you for voting!";
-        menu::paymoney($msisdn,$network);
+        menu::paymoney("+233556676471",'mtn');
         $continueSession = false;
     } else {
         $message = "Bad choice!";
